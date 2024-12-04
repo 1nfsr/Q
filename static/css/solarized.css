@@ -1,0 +1,230 @@
+/* Base styles for code blocks */
+.chroma {
+  transition: background-color 0.3s ease;
+}
+
+/* Light mode - Solarized Light */
+:root {
+  --code-bg: #fdf6e3;
+  --code-border: #eee8d5;
+}
+
+/* Dark mode - Solarized Dark */
+.dark {
+  --code-bg: #002b36;
+  --code-border: #073642;
+}
+
+/* Code block container */
+pre {
+  background-color: var(--code-bg);
+  border: 1px solid var(--code-border);
+  border-radius: 0.75rem;
+  padding: 1.25rem;
+  margin: 1rem 0;
+  overflow-x: auto;
+}
+
+/* Light mode colors */
+.chroma {
+  color: #586e75;
+  background-color: var(--code-bg);
+}
+
+/* Dark mode colors */
+.dark .chroma {
+  color: #93a1a1;
+  background-color: var(--code-bg);
+}
+
+/* Common syntax highlighting */
+.chroma .k { color: #859900 } /* Keyword */
+.chroma .kc { color: #859900; font-weight: bold } /* Keyword.Constant */
+.chroma .kd { color: #859900 } /* Keyword.Declaration */
+.chroma .kn { color: #dc322f; font-weight: bold } /* Keyword.Namespace */
+.chroma .kp { color: #859900 } /* Keyword.Pseudo */
+.chroma .kr { color: #859900 } /* Keyword.Reserved */
+.chroma .kt { color: #859900; font-weight: bold } /* Keyword.Type */
+.chroma .n { color: #268bd2 } /* Name */
+.chroma .na { color: #268bd2 } /* Name.Attribute */
+.chroma .nb { color: #268bd2 } /* Name.Builtin */
+.chroma .nc { color: #268bd2 } /* Name.Class */
+.chroma .s { color: #2aa198 } /* String */
+.chroma .c { color: #93a1a1 } /* Comment */
+
+/* Dark mode overrides */
+.dark .chroma .k { color: #719e07 }
+.dark .chroma .kc { color: #cb4b16 }
+.dark .chroma .kd { color: #268bd2 }
+.dark .chroma .kn { color: #719e07 }
+.dark .chroma .nb { color: #b58900 }
+.dark .chroma .bp { color: #268bd2 }
+
+/* 代码块复制按钮容器 */
+.relative.group {
+  border-radius: 0.75rem;
+  overflow: hidden;
+}
+
+/* 语言标签和复制按钮容器 */
+.relative.group > div:first-child {
+  right: 0.5rem;
+  top: 0.5rem;
+  z-index: 10;
+}
+
+/* 语言标签样式 */
+.relative.group span:first-child {
+  border-top-right-radius: 0.5rem;
+}
+
+/* 复制按钮样式 */
+.relative.group button {
+  border-top-right-radius: 0.5rem;
+}
+
+/* Code block container */
+.highlight {
+  position: relative;
+  margin: 1rem 0;
+  padding-top: 2rem;
+  padding-bottom: 1rem;
+  background-color: var(--code-bg);
+  border: 1px solid var(--code-border);
+  border-radius: 0.75rem;
+}
+
+/* Code block header */
+.highlight::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2rem;
+  background-color: var(--code-bg);
+  border-bottom: 1px solid var(--code-border);
+  border-top-left-radius: 0.75rem;
+  border-top-right-radius: 0.75rem;
+}
+
+/* Header container */
+.highlight .header-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1rem;
+  z-index: 10;
+}
+
+/* Language label */
+.highlight .language-label {
+  font-size: 0.75rem;
+  font-family: ui-monospace, monospace;
+  color: #586e75;
+  padding: 0.25rem 0;
+  font-weight: 600;
+}
+
+/* Copy button */
+.highlight .copy-button {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.25rem 0;
+  font-size: 0.75rem;
+  color: #586e75;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.highlight .copy-button:hover {
+  color: #268bd2;
+}
+
+/* Code content */
+.highlight pre {
+  margin: 0 !important;
+  padding: 0.5rem 1rem !important;
+  background: transparent !important;
+  border: none !important;
+  line-height: 1.2;
+}
+
+.highlight code {
+  padding: 0 !important;
+  white-space: pre !important;
+  font-size: 0.875rem !important;
+}
+
+/* Dark mode overrides */
+.dark .highlight .language-label,
+.dark .highlight .copy-button {
+  color: #93a1a1;
+}
+
+.dark .highlight .copy-button:hover {
+  color: #2aa198;
+}
+
+/* Line numbers */
+.highlight .line-numbers {
+  -webkit-user-select: none;
+  user-select: none;
+  padding-right: 0.8em;
+  border-right: 1px solid var(--code-border);
+  color: #93a1a1;
+  opacity: 0.5;
+}
+
+/* Line highlight */
+.highlight .line.highlighted {
+  background-color: rgba(255, 255, 0, 0.1);
+  display: block;
+  margin-right: -1rem;
+  margin-left: -1rem;
+  padding-left: 1rem;
+}
+
+/* Dark mode line highlight */
+.dark .highlight .line.highlighted {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Show line numbers when .line-numbers class is present */
+.highlight.show-line-numbers .line::before {
+  counter-increment: line;
+  content: counter(line);
+  display: inline-block;
+  width: 1.5rem;
+  margin-right: 1rem;
+  text-align: right;
+  color: #93a1a1;
+  opacity: 0.5;
+}
+
+/* Adjust code content when line numbers are shown */
+.highlight.show-line-numbers pre {
+  padding-left: 3.5rem !important;
+}
+
+/* Code block content styles */
+.highlight pre {
+  padding: 0 1.25rem;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.2;  /* 减小行距使代码更紧凑 */
+}
+
+/* When line numbers are shown */
+.highlight.show-line-numbers pre {
+  padding-left: 3.5rem;
+  padding-right: 1.25rem;
+}

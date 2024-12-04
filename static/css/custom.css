@@ -1,0 +1,140 @@
+/* Base admonition styles */
+.admonition {
+  margin: 1.5rem 0;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.dark .admonition {
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+/* Note */
+.admonition.note {
+  border-color: #448aff;
+}
+.admonition.note .admonition-title {
+  color: #448aff;
+  background-color: rgba(68, 138, 255, 0.1);
+}
+
+/* Abstract */
+.admonition.abstract {
+  border-color: #00b0ff;
+}
+.admonition.abstract .admonition-title {
+  color: #00b0ff;
+  background-color: rgba(0, 176, 255, 0.1);
+}
+
+/* Info */
+.admonition.info {
+  border-color: #00b8d4;
+}
+.admonition.info .admonition-title {
+  color: #00b8d4;
+  background-color: rgba(0, 184, 212, 0.1);
+}
+
+/* Tip */
+.admonition.tip {
+  border-color: #00bfa5;
+}
+.admonition.tip .admonition-title {
+  color: #00bfa5;
+  background-color: rgba(0, 191, 165, 0.1);
+}
+
+/* Success */
+.admonition.success {
+  border-color: #00c853;
+}
+.admonition.success .admonition-title {
+  color: #00c853;
+  background-color: rgba(0, 200, 83, 0.1);
+}
+
+/* Question */
+.admonition.question {
+  border-color: #64dd17;
+}
+.admonition.question .admonition-title {
+  color: #64dd17;
+  background-color: rgba(100, 221, 23, 0.1);
+}
+
+/* Warning */
+.admonition.warning {
+  border-color: #ff9100;
+}
+.admonition.warning .admonition-title {
+  color: #ff9100;
+  background-color: rgba(255, 145, 0, 0.1);
+}
+
+/* Failure */
+.admonition.failure {
+  border-color: #ff5252;
+}
+.admonition.failure .admonition-title {
+  color: #ff5252;
+  background-color: rgba(255, 82, 82, 0.1);
+}
+
+/* Danger */
+.admonition.danger {
+  border-color: #ff1744;
+}
+.admonition.danger .admonition-title {
+  color: #ff1744;
+  background-color: rgba(255, 23, 68, 0.1);
+}
+
+/* Bug */
+.admonition.bug {
+  border-color: #f50057;
+}
+.admonition.bug .admonition-title {
+  color: #f50057;
+  background-color: rgba(245, 0, 87, 0.1);
+}
+
+/* Example */
+.admonition.example {
+  border-color: #7c4dff;
+}
+.admonition.example .admonition-title {
+  color: #7c4dff;
+  background-color: rgba(124, 77, 255, 0.1);
+}
+
+/* Quote */
+.admonition.quote {
+  border-color: #9e9e9e;
+}
+.admonition.quote .admonition-title {
+  color: #9e9e9e;
+  background-color: rgba(158, 158, 158, 0.1);
+}
+
+/* Dark mode overrides */
+.dark .admonition-title {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* 添加到现有的 custom.css 中 */
+pre {
+  transition: background-color 0.3s ease;
+}
+
+.copy-button {
+  transition: opacity 0.2s ease, background-color 0.2s ease;
+}
+
+/* 调整 admonition 标题和内容的内边距 */
+.admonition-title {
+  padding: 0.75rem 1.25rem !important;  /* 上下增加到0.75rem，左右增加到1.25rem */
+}
+
+.admonition-content {
+  padding: 1rem 1.25rem !important;  /* 上下1rem，左右1.25rem，保持一致性 */
+}

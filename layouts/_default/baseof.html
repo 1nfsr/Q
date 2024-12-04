@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} - {{ .Site.Title }}{{ end }}</title>
     <link rel="stylesheet" href="{{ "css/styles.css" | relURL }}">
+    <link rel="stylesheet" href="{{ "css/custom.css" | relURL }}">
+    <link rel="stylesheet" href="{{ "css/solarized.css" | relURL }}">
 </head>
 <body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
     {{ partial "header.html" . }}
@@ -13,5 +15,7 @@
     </main>
     {{ partial "footer.html" . }}
     <script defer src="{{ "js/theme.js" | relURL }}"></script>
+    <link rel="stylesheet" href="/css/solarized.css">
+    <script src="/js/code-copy.js" defer></script>
 </body>
 </html>

@@ -1,0 +1,39 @@
+{{ $type := .Get 0 }}
+{{ $title := .Get 1 | default (humanize $type) }}
+{{ $collapsible := .Get 2 | default false }}
+{{ $open := .Get 3 | default true }}
+{{ $inner := .Inner | .Page.RenderString }}
+
+{{- $iconMap := dict 
+  "note" "<path d='M14 3v4a1 1 0 0 0 1 1h4'/><path d='M17 21H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7l5 5v11a2 2 0 0 1-2 2z'/>"
+-}}
+{{- $iconMap = dict "abstract" "<path d='M4 7h16M4 11h16M4 15h8'/>" | merge $iconMap -}}
+{{- $iconMap = dict "info" "<circle cx='12' cy='12' r='10'/><line x1='12' y1='16' x2='12' y2='12'/><line x1='12' y1='8' x2='12.01' y2='8'/>" | merge $iconMap -}}
+{{- $iconMap = dict "tip" "<path d='M12 2v8'/><path d='m4.93 10.93 1.41 1.41'/><path d='M2 18h2'/><path d='M20 18h2'/><path d='m19.07 10.93-1.41 1.41'/><path d='M22 22H2'/><path d='m16 6-4 4-4-4'/>" | merge $iconMap -}}
+{{- $iconMap = dict "success" "<path d='M20 6L9 17l-5-5'/>" | merge $iconMap -}}
+{{- $iconMap = dict "question" "<circle cx='12' cy='12' r='10'/><path d='M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3'/><line x1='12' y1='17' x2='12.01' y2='17'/>" | merge $iconMap -}}
+{{- $iconMap = dict "warning" "<path d='m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z'/><line x1='12' y1='9' x2='12' y2='13'/><line x1='12' y1='17' x2='12.01' y2='17'/>" | merge $iconMap -}}
+{{- $iconMap = dict "failure" "<circle cx='12' cy='12' r='10'/><line x1='15' y1='9' x2='9' y2='15'/><line x1='9' y1='9' x2='15' y2='15'/>" | merge $iconMap -}}
+{{- $iconMap = dict "danger" "<path d='M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z'/><line x1='12' y1='9' x2='12' y2='13'/><line x1='12' y1='17' x2='12.01' y2='17'/>" | merge $iconMap -}}
+{{- $iconMap = dict "bug" "<path d='M12 2a2 2 0 0 0-2 2v2H7a2 2 0 0 0-2 2v2.17c-1.17.41-2 1.52-2 2.83v2c0 1.31.83 2.42 2 2.83V18a2 2 0 0 0 2 2h3v-2h4v2h3a2 2 0 0 0 2-2v-2.17c1.17-.41 2-1.52 2-2.83v-2c0-1.31-.83-2.42-2-2.83V8a2 2 0 0 0-2-2h-3V4a2 2 0 0 0-2-2z'/>" | merge $iconMap -}}
+{{- $iconMap = dict "example" "<path d='M4 4h16v16H4z'/><path d='M4 12h16'/><path d='M12 4v16'/>" | merge $iconMap -}}
+{{- $iconMap = dict "quote" "<path d='M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z'/><path d='M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z'/>" | merge $iconMap -}}
+
+<div class="admonition {{ $type }} border-l-4 rounded-lg my-4 overflow-hidden bg-white dark:bg-gray-800">
+  <div class="admonition-title flex items-center gap-2 p-3 font-bold {{ if $collapsible }}cursor-pointer select-none{{ end }}" 
+       {{ if $collapsible }}onclick="toggleAdmonition(this.parentElement)"{{ end }}>
+    <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      {{ index $iconMap $type | safeHTML }}
+    </svg>
+    <span class="flex-grow">{{ $title }}</span>
+    {{ if $collapsible }}
+    <svg class="w-6 h-6 transform transition-transform duration-200" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M19 9l-7 7-7-7"/>
+    </svg>
+    {{ end }}
+  </div>
+  <div class="admonition-content p-3 prose dark:prose-invert max-w-none {{ if $collapsible }}collapsible{{ end }}" 
+       {{ if $collapsible }}style="display: {{ if $open }}block{{ else }}none{{ end }};"{{ end }}>
+    {{ $inner }}
+  </div>
+</div>
