@@ -1,0 +1,24 @@
+{{ define "main" }}
+<article class="prose dark:prose-invert lg:prose-lg mx-auto bg-white dark:bg-gray-800 rounded-lg shadow-md p-8">
+    <h1>{{ .Title }}</h1>
+    <div class="text-sm text-gray-600 dark:text-gray-400 mb-8">
+        <time datetime="{{ .Date.Format "2006-01-02" }}">
+            {{ .Date.Format "January 2, 2006" }}
+        </time>
+    </div>
+    {{ .Content }}
+    {{ with .Params.tags }}
+    <div class="mt-8 pt-4 border-t border-gray-200 dark:border-gray-700">
+        <h3 class="text-lg font-semibold mb-2">Tags:</h3>
+        <div class="flex flex-wrap gap-2">
+            {{ range . }}
+            <a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}" 
+               class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm hover:bg-gray-200 dark:hover:bg-gray-600">
+                #{{ . }}
+            </a>
+            {{ end }}
+        </div>
+    </div>
+    {{ end }}
+</article>
+{{ end }}

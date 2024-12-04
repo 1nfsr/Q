@@ -1,0 +1,31 @@
+{{ define "main" }}
+<div class="max-w-3xl mx-auto space-y-8">
+    <h1 class="text-3xl font-bold mb-8">{{ .Title }}</h1>
+    <div class="space-y-8">
+        {{ range .Pages }}
+        <article class="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden">
+            <div class="p-6">
+                <h2 class="text-xl font-semibold mb-2">
+                    <a href="{{ .RelPermalink }}" class="hover:text-blue-600 dark:hover:text-blue-400">
+                        {{ .Title }}
+                    </a>
+                </h2>
+                <div class="text-sm text-gray-600 dark:text-gray-400 mb-4">
+                    <time datetime="{{ .Date.Format "2006-01-02" }}">
+                        {{ .Date.Format "January 2, 2006" }}
+                    </time>
+                </div>
+                <p class="text-gray-700 dark:text-gray-300">
+                    {{ .Summary }}
+                </p>
+                <div class="mt-4">
+                    <a href="{{ .RelPermalink }}" class="text-blue-600 dark:text-blue-400 hover:underline">
+                        Read more →
+                    </a>
+                </div>
+            </div>
+        </article>
+        {{ end }}
+    </div>
+</div>
+{{ end }}

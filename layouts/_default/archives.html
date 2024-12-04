@@ -1,0 +1,38 @@
+{{ define "main" }}
+<div class="max-w-3xl mx-auto space-y-8">
+    <h1 class="text-3xl font-bold mb-8">Archives</h1>
+    
+    {{ $pages := where .Site.RegularPages "Type" "posts" }}
+    {{ $pages := $pages.ByDate.Reverse }}
+    
+    {{ range $pages.GroupByDate "2006" }}
+    <!-- Year -->
+    <div class="space-y-6">
+        <h2 class="text-2xl font-bold text-gray-800 dark:text-gray-200">{{ .Key }}</h2>
+        
+        {{ range .Pages.GroupByDate "January" }}
+        <!-- Month -->
+        <div class="ml-6 space-y-4">
+            <h3 class="text-xl font-semibold text-gray-700 dark:text-gray-300">{{ .Key }}</h3>
+            
+            <!-- Posts -->
+            <div class="ml-4 space-y-2">
+                {{ range .Pages }}
+                <div class="flex items-center space-x-4">
+                    <time datetime="{{ .Date.Format "2006-01-02" }}" 
+                          class="text-sm text-gray-600 dark:text-gray-400 w-24">
+                        {{ .Date.Format "01-02" }}
+                    </time>
+                    <a href="{{ .RelPermalink }}" 
+                       class="hover:text-blue-600 dark:hover:text-blue-400">
+                        {{ .Title }}
+                    </a>
+                </div>
+                {{ end }}
+            </div>
+        </div>
+        {{ end }}
+    </div>
+    {{ end }}
+</div>
+{{ end }} 
