@@ -132,9 +132,9 @@ pre {
 
 /* 调整 admonition 标题和内容的内边距 */
 .admonition-title {
-  padding: 0.75rem 1.25rem !important;  /* 上下增加到0.75rem，左右增加到1.25rem */
+  padding: 0.2rem 0.7rem !important;  /* 上下增加到0.2rem，左右增加到0.7rem */
 }
 
 .admonition-content {
-  padding: 1rem 1.25rem !important;  /* 上下1rem，左右1.25rem，保持一致性 */
+  padding: 0.5rem 0.8rem !important;  /* 上下0.5rem，左右0.8rem，保持一致性 */
 }
