@@ -130,11 +130,56 @@ pre {
   transition: opacity 0.2s ease, background-color 0.2s ease;
 }
 
-/* 调整 admonition 标题和内容的内边距 */
+/* ���整 admonition 标题和内容的内边距 */
 .admonition-title {
   padding: 0.2rem 0.7rem !important;  /* 上下增加到0.2rem，左右增加到0.7rem */
 }
 
 .admonition-content {
   padding: 0.5rem 0.8rem !important;  /* 上下0.5rem，左右0.8rem，保持一致性 */
+}
+
+/* Code block content styles */
+.highlight pre {
+  padding: 0 1.25rem;
+  font-size: 0.875rem;  /* Changed from 24px to 0.875rem */
+  font-weight: 400;     /* Reduced from 600 to 400 */
+  line-height: 1.5;     /* Increased from 1.2 to 1.5 */
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+:root {
+    color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg-primary: #1a1a1a;
+        --text-primary: #ffffff;
+    }
+}
+
+@media (prefers-color-scheme: light) {
+    :root {
+        --bg-primary: #ffffff;
+        --text-primary: #1a1a1a;
+    }
+}
+
+
+
+.prose img {
+    border-radius: 0.5rem;
+    margin: 2rem auto;
+}
+
+.prose code {
+    font-size: 0.875em;
+    border-radius: 0.25rem;
+    padding: 0.2em 0.4em;
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.dark .prose code {
+    background-color: rgba(255, 255, 255, 0.1);
 }

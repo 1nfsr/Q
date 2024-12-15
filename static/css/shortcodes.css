@@ -1,0 +1,41 @@
+.video-container {
+    background-color: #000;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.twitter-container {
+    display: flex;
+    justify-content: center;
+    margin: 2rem 0;
+}
+
+/* Video container styles */
+.video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 */
+    height: 0;
+    overflow: hidden;
+    max-width: 100%;
+    margin-bottom: 1rem;
+}
+
+.video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+/* Twitter container styles */
+.twitter-tweet {
+    margin: 1rem auto !important;
+}
+
+/* Add dark mode support */
+@media (prefers-color-scheme: dark) {
+    .twitter-tweet {
+        background: #1a1a1a !important;
+    }
+} 

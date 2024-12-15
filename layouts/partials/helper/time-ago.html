@@ -1,0 +1,22 @@
+{{ $now := now }}
+{{ $diff := $now.Sub . }}
+
+{{ $minutes := math.Floor (div $diff.Seconds 60) }}
+{{ $hours := math.Floor (div $minutes 60) }}
+{{ $days := math.Floor (div $hours 24) }}
+{{ $months := math.Floor (div $days 30) }}
+{{ $years := math.Floor (div $days 365) }}
+
+{{ if lt $minutes 1 }}
+刚刚
+{{ else if lt $hours 1 }}
+{{ $minutes }}分钟前
+{{ else if lt $days 1 }}
+{{ $hours }}小时前
+{{ else if lt $months 1 }}
+{{ $days }}天前
+{{ else if lt $years 1 }}
+{{ $months }}个月前
+{{ else }}
+{{ $years }}年前
+{{ end }}

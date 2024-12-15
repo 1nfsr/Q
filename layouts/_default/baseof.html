@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html lang="{{ .Site.LanguageCode | default "en" }}">
+<html lang="{{ .Site.LanguageCode }}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} - {{ .Site.Title }}{{ end }}</title>
-    <link rel="stylesheet" href="{{ "css/styles.css" | relURL }}">
-    <link rel="stylesheet" href="{{ "css/custom.css" | relURL }}">
-    <link rel="stylesheet" href="{{ "css/solarized.css" | relURL }}">
+    <meta name="color-scheme" content="light dark">
+    <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/custom.css">
+    {{ if .Site.Params.math }}{{ partial "math.html" . }}{{ end }}
 </head>
 <body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
     {{ partial "header.html" . }}
@@ -14,7 +15,6 @@
         {{ block "main" . }}{{ end }}
     </main>
     {{ partial "footer.html" . }}
-    <script defer src="{{ "js/theme.js" | relURL }}"></script>
-    <script src="{{ "js/code-copy.js" | relURL }}" defer></script>
+    <script src="/js/theme.js" defer></script>
 </body>
 </html>
