@@ -130,7 +130,7 @@ pre {
   transition: opacity 0.2s ease, background-color 0.2s ease;
 }
 
-/* ���整 admonition 标题和内容的内边距 */
+/* 调整 admonition 标题和内容的内边距 */
 .admonition-title {
   padding: 0.2rem 0.7rem !important;  /* 上下增加到0.2rem，左右增加到0.7rem */
 }
